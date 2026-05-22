@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTuberForge - Try VTuber</title>
+  <link rel="stylesheet" href="css/style.css?v=try-vtuber-v1" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.167.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.0/examples/jsm/",
+        "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js"
+      }
+    }
+  </script></head>
+<body data-page="try-vtuber">
+  <canvas id="particles-canvas"></canvas>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="university-mark" href="https://astanait.edu.kz/" aria-label="Astana IT University">
+        <img src="https://astanait.edu.kz/assets/aitu-logo.svg" alt="Astana IT University logo" />
+        <span>Astana IT University</span>
+      </a>
+      <a class="brand" href="index.html">
+        <span class="brand-badge"><i class="fa-solid fa-cube"></i></span>
+        <span class="brand-text">
+          <span>VTuberForge</span>
+          <small data-i18n="brandSubtitle">Learning platform</small>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <div class="nav-group" data-nav="auth">
+          <a class="nav-pill" href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="login.html" data-nav="login" data-nav-link data-i18n="navLogin">Login</a>
+          <a class="nav-pill" href="register.html" data-nav="register" data-nav-link data-i18n="navRegister">Register</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="user">
+          <a class="nav-pill" href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="lessons.html" data-nav-link data-i18n="navLessons">Lessons</a>
+          <a class="nav-pill" href="news.html" data-nav-link data-i18n="navNews">News</a>
+          <a class="nav-pill" href="profile.html" data-nav-link data-i18n="navProfile">Profile</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="admin">
+          <a class="nav-pill" href="admin.html" data-nav-link data-i18n="navAdmin">Admin</a>
+        </div>
+
+        <div class="language-switcher" aria-label="Language switcher">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="kk">KZ</button>
+          <button class="lang-btn" type="button" data-lang-btn="ru">RU</button>
+        </div>
+
+        <div class="nav-group hidden" data-nav="logout">
+          <button class="btn btn-primary btn-sm" data-logout>
+            <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="navLogout">Logout</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="section try-vtuber-section">
+      <div class="container">
+        <div class="section-label reveal" data-i18n="tryLabel">Live avatar test</div>
+        <h1 class="section-title reveal" data-i18n="tryTitle">Try becoming a VTuber</h1>
+        <p class="section-sub reveal" data-i18n="tryText">
+          Upload a VRM, GLB, or GLTF model, turn on your camera, and watch the avatar follow your head movement and facial expressions.
+        </p>
+
+        <div class="try-vtuber-grid section-block">
+          <section class="try-stage card reveal">
+            <div id="modelStage" class="model-stage">
+              <canvas id="avatarCanvas"></canvas>
+              <div id="stageEmpty" class="stage-empty">
+                <i class="fa-solid fa-cube"></i>
+                <strong data-i18n="tryEmptyTitle">Upload a 3D model</strong>
+                <span data-i18n="tryEmptyText">VRM, GLB, or GLTF works best.</span>
+              </div>
+            </div>
+          </section>
+
+          <aside class="try-controls card reveal">
+            <div class="control-block">
+              <label for="modelInput" data-i18n="tryUploadLabel">3D model file</label>
+              <input id="modelInput" type="file" accept=".vrm,.glb,.gltf,model/gltf-binary,model/gltf+json" />
+            </div>
+
+            <div class="control-row">
+              <button id="cameraButton" class="btn btn-primary" type="button">
+                <i class="fa-solid fa-camera"></i>
+                <span data-i18n="tryCameraButton">Start camera</span>
+              </button>
+              <button id="resetButton" class="btn btn-secondary" type="button">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span data-i18n="tryResetButton">Reset pose</span>
+              </button>
+            </div>
+
+            <video id="webcamVideo" class="webcam-preview" playsinline muted></video>
+
+            <div class="tracking-panel">
+              <div>
+                <span data-i18n="tryStatusLabel">Status</span>
+                <strong id="trackingStatus" data-i18n="tryStatusIdle">Waiting for model</strong>
+              </div>
+              <div>
+                <span data-i18n="tryFaceLabel">Face tracking</span>
+                <strong id="faceStatus" data-i18n="tryFaceOff">Off</strong>
+              </div>
+              <div>
+                <span data-i18n="tryModelLabel">Model</span>
+                <strong id="modelStatus" data-i18n="tryModelEmpty">Not loaded</strong>
+              </div>
+            </div>
+
+            <div class="try-note notice">
+              <strong data-i18n="tryNoteTitle">Important</strong>
+              <span data-i18n="tryNoteText">Facial mimic works best on VRM models or GLB models with morph targets named like blink, smile, jawOpen, or mouthOpen.</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div data-i18n="footerBrand">VTuberForge x Astana IT University</div>
+        <div data-i18n="footerBackend">KBA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/i18n.js?v=try-vtuber-v1"></script>
+  <script type="module" src="js/try-vtuber.js?v=try-vtuber-v2"></script>
+</body>
+</html>
+
+
+

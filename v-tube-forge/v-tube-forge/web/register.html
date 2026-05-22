@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTuberForge - Register</title>
+  <link rel="stylesheet" href="css/style.css?v=try-vtuber-v1" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body data-page="register">
+  <canvas id="particles-canvas"></canvas>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="university-mark" href="https://astanait.edu.kz/" aria-label="Astana IT University">
+        <img src="https://astanait.edu.kz/assets/aitu-logo.svg" alt="Astana IT University logo" />
+        <span>Astana IT University</span>
+      </a>
+      <a class="brand" href="index.html">
+        <span class="brand-badge"><i class="fa-solid fa-cube"></i></span>
+        <span class="brand-text">
+          <span>VTuberForge</span>
+          <small data-i18n="brandSubtitle">Learning platform</small>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <div class="nav-group" data-nav="auth">
+          <a class="nav-pill " href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="login.html" data-nav="login" data-nav-link data-i18n="navLogin">Login</a>
+          <a class="nav-pill" href="register.html" data-nav="register" data-nav-link data-i18n="navRegister">Register</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="user">
+          <a class="nav-pill" href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="lessons.html" data-nav-link data-i18n="navLessons">Lessons</a>
+          <a class="nav-pill" href="news.html" data-nav-link data-i18n="navNews">News</a>
+          <a class="nav-pill" href="profile.html" data-nav-link data-i18n="navProfile">Profile</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="admin">
+          <a class="nav-pill" href="admin.html" data-nav-link data-i18n="navAdmin">Admin</a>
+        </div>
+
+        <div class="language-switcher" aria-label="Language switcher">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="kk">KZ</button>
+          <button class="lang-btn" type="button" data-lang-btn="ru">RU</button>
+        </div>
+        <div class="nav-group hidden" data-nav="logout">
+          <button class="btn btn-primary btn-sm" data-logout>
+            <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="navLogout">Logout</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+
+<section class="section">
+  <div class="container auth-wrap">
+    <div class="auth-card card reveal">
+      <div class="section-label" data-i18n="registerLabel">Create account</div>
+      <h1 data-i18n="registerTitle">Join the platform</h1>
+      <p data-i18n="registerText">Registration creates your user, generates tokens, and sends you straight into learning.</p>
+
+      <div class="form">
+        <input id="loginInput" type="text" placeholder="Login" data-i18n-placeholder="inputLogin" autocomplete="username" />
+        <input id="passwordInput" type="password" placeholder="Password" data-i18n-placeholder="inputPassword" autocomplete="new-password" />
+        <button class="btn btn-primary btn-lg" type="button" onclick="registerUser()">
+          <i class="fa-solid fa-user-plus"></i> <span data-i18n="registerButton">Create account</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div data-i18n="footerBrand">VTuberForge x Astana IT University</div>
+        <div data-i18n="footerBackend">KBA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/i18n.js?v=try-vtuber-v1"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+
+
+
+
+

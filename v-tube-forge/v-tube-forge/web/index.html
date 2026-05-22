@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTuberForge - Home</title>
+  <link rel="stylesheet" href="css/style.css?v=try-vtuber-v1" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body data-page="home">
+  <canvas id="particles-canvas"></canvas>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="university-mark" href="https://astanait.edu.kz/" aria-label="Astana IT University">
+        <img src="https://astanait.edu.kz/assets/aitu-logo.svg" alt="Astana IT University logo" />
+        <span>Astana IT University</span>
+      </a><a class="brand" href="index.html">
+        <span class="brand-badge"><i class="fa-solid fa-cube"></i></span>
+        <span class="brand-text">
+          <span>VTuberForge</span>
+          <small data-i18n="brandSubtitle">Learning platform</small>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <div class="nav-group" data-nav="auth">
+          <a class="nav-pill" href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="login.html" data-nav="login" data-nav-link data-i18n="navLogin">Login</a>
+          <a class="nav-pill" href="register.html" data-nav="register" data-nav-link data-i18n="navRegister">Register</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="user">
+          <a class="nav-pill" href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="lessons.html" data-nav-link data-i18n="navLessons">Lessons</a>
+          <a class="nav-pill" href="news.html" data-nav-link data-i18n="navNews">News</a>
+          <a class="nav-pill" href="profile.html" data-nav-link data-i18n="navProfile">Profile</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="admin">
+          <a class="nav-pill" href="admin.html" data-nav-link data-i18n="navAdmin">Admin</a>
+        </div>
+
+        <div class="language-switcher" aria-label="Language switcher">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="kk">KZ</button>
+          <button class="lang-btn" type="button" data-lang-btn="ru">RU</button>
+        </div>
+
+        <div class="nav-group hidden" data-nav="logout">
+          <button class="btn btn-primary btn-sm" data-logout>
+            <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="navLogout">Logout</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card glass reveal">
+          <div class="hero-kicker"><i class="fa-solid fa-wand-sparkles"></i> <span data-i18n="heroKicker">VTuber creator academy by AITU</span></div>
+          <h1 class="hero-title" data-i18n-html="heroTitle">Forge your virtual identity <span class="gradient-text">and go live like a pro</span>.</h1>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">
+            Learn avatar creation, OBS setup, streaming confidence, visual branding, and the tech workflow behind modern VTubing.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="try-vtuber.html"><i class="fa-solid fa-video"></i> <span data-i18n="ctaTryVtuber">Попробуй стать витубером</span></a>
+            <a class="btn btn-secondary btn-lg" href="register.html"><i class="fa-solid fa-rocket"></i> <span data-i18n="ctaStart">Start the forge</span></a>
+            <a class="btn btn-secondary btn-lg" href="login.html"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="ctaLogin">Enter lab</span></a>
+            <a class="btn btn-secondary btn-lg hidden" data-nav="user" href="lessons.html"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="ctaContinue">Continue learning</span></a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-number">3</span>
+              <div class="stat-label" data-i18n="statTracks">Creator tracks from avatar basics to full stream production.</div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">100%</span>
+              <div class="stat-label" data-i18n="statAccess">Role-based access for students, creators, and admins.</div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">1</span>
+              <div class="stat-label" data-i18n="statSync">Tap to pass lessons and sync progress with the backend.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+          <div class="orb three"></div>
+          <div class="holo-panel top"><i class="fa-solid fa-signal"></i><span data-i18n="holoLive">Live-ready</span></div>
+          <div class="holo-panel bottom"><i class="fa-solid fa-fire-flame-curved"></i><span data-i18n="holoCreator">Creator mode</span></div>
+          <div class="avatar-stage">
+            <div class="avatar-ring r1"></div>
+            <div class="avatar-ring r2"></div>
+            <div class="avatar-ring r3"></div>
+            <div class="avatar-core"><i class="fa-solid fa-user-astronaut"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <div class="section-label reveal" data-i18n="whatLabel">What you unlock</div>
+        <h2 class="section-title reveal" data-i18n="whatTitle">A futuristic creator hub with real learning flow.</h2>
+        <p class="section-sub reveal" data-i18n="whatText">
+          VTuberForge feels like a digital studio: clear structure, protected pages, lesson progress, and a premium academic-tech atmosphere.
+        </p>
+
+        <div class="grid-3 section-block">
+          <article class="feature-card card reveal">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 data-i18n="featureAccessTitle">Smart access</h3>
+            <p data-i18n="featureAccessText">Guests see the welcome path. Students enter lessons. Admin tools stay locked behind role checks.</p>
+          </article>
+
+          <article class="feature-card card reveal">
+            <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3 data-i18n="featureRoadmapTitle">Studio roadmap</h3>
+            <p data-i18n="featureRoadmapText">Lessons are grouped into intro videos and full tutorial series, so every step feels clear and cinematic.</p>
+          </article>
+
+          <article class="feature-card card reveal">
+            <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3 data-i18n="featureProgressTitle">Progress sync</h3>
+            <p data-i18n="featureProgressText">Completed courses connect to the backend API and show up across profile and lesson cards.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-label reveal" data-i18n="aboutLabel">About us</div>
+        <h2 class="section-title reveal" data-i18n="aboutTitle">Meet the team behind VTuberForge.</h2>
+        <p class="section-sub reveal" data-i18n="aboutText">
+          We are a small creator-focused team from Astana IT University building a practical space for future VTubers. Our goal is simple: help beginners understand the tools, design their avatar identity, and feel confident before their first real stream.
+        </p>
+
+        <div class="about-grid section-block">
+          <article class="mentor-card card reveal">
+            <div class="mentor-avatar ari">A</div>
+            <div class="mentor-role" data-i18n="ariRole">VTuber Consultant</div>
+            <h3>Ari</h3>
+            <p data-i18n="ariText">VTuber and 3D artist. Ari works as the friendly VTubing consultant: she helps students choose a character concept, understand stream culture, plan first content ideas, and avoid beginner mistakes.</p>
+          </article>
+
+          <article class="mentor-card card reveal">
+            <div class="mentor-avatar beka">B</div>
+            <div class="mentor-role" data-i18n="bekaRole">Tech &amp; Tools Expert</div>
+            <h3>Beka</h3>
+            <p data-i18n="bekaText">Software engineer turned VTuber educator. Beka handles the technical side: OBS scenes, VSeeFace, tracking, microphone setup, plugins, and clean explanations for tools that usually feel confusing.</p>
+          </article>
+
+          <article class="mentor-card card reveal">
+            <div class="mentor-avatar dide">D</div>
+            <div class="mentor-role" data-i18n="dideRole">Art &amp; Design Lead</div>
+            <h3>Dide</h3>
+            <p data-i18n="dideText">Professional 2D/3D character designer. Dide guides the visual side: VRoid Studio, Blender basics, color palettes, avatar personality, expressions, and small design choices that make a model memorable.</p>
+          </article>
+        </div>
+
+        <div class="platform-points reveal">
+          <div><i class="fa-solid fa-video"></i><span data-i18n="point1">OBS scenes, overlays, audio, and stream polish</span></div>
+          <div><i class="fa-solid fa-cube"></i><span data-i18n="point2">2D/3D avatar workflow from idea to presentation</span></div>
+          <div><i class="fa-solid fa-chart-line"></i><span data-i18n="point3">Creator growth, content planning, and personal branding</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div data-i18n="footerBrand">VTuberForge x Astana IT University</div>
+        <div data-i18n="footerBackend">Frontend connected to Go backend</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/i18n.js?v=try-vtuber-v1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
