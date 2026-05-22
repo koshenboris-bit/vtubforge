@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTuberForge - Profile</title>
+  <link rel="stylesheet" href="css/style.css?v=try-vtuber-v1" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body data-page="profile">
+  <canvas id="particles-canvas"></canvas>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="university-mark" href="https://astanait.edu.kz/" aria-label="Astana IT University">
+        <img src="https://astanait.edu.kz/assets/aitu-logo.svg" alt="Astana IT University logo" />
+        <span>Astana IT University</span>
+      </a>
+      <a class="brand" href="index.html">
+        <span class="brand-badge"><i class="fa-solid fa-cube"></i></span>
+        <span class="brand-text">
+          <span>VTuberForge</span>
+          <small data-i18n="brandSubtitle">Learning platform</small>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <div class="nav-group" data-nav="auth">
+          <a class="nav-pill " href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="login.html" data-nav="login" data-nav-link data-i18n="navLogin">Login</a>
+          <a class="nav-pill" href="register.html" data-nav="register" data-nav-link data-i18n="navRegister">Register</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="user">
+          <a class="nav-pill" href="index.html" data-nav-link data-i18n="navHome">Home</a>
+          <a class="nav-pill" href="lessons.html" data-nav-link data-i18n="navLessons">Lessons</a>
+          <a class="nav-pill" href="news.html" data-nav-link data-i18n="navNews">News</a>
+          <a class="nav-pill" href="profile.html" data-nav-link data-i18n="navProfile">Profile</a>
+        </div>
+
+        <div class="nav-group hidden" data-nav="admin">
+          <a class="nav-pill" href="admin.html" data-nav-link data-i18n="navAdmin">Admin</a>
+        </div>
+
+        <div class="language-switcher" aria-label="Language switcher">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="kk">KZ</button>
+          <button class="lang-btn" type="button" data-lang-btn="ru">RU</button>
+        </div>
+        <div class="nav-group hidden" data-nav="logout">
+          <button class="btn btn-primary btn-sm" data-logout>
+            <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="navLogout">Logout</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal" data-i18n="profileLabel">Your profile</div>
+    <h1 class="section-title reveal" data-i18n="profileTitle">Progress Dashboard</h1>
+
+    <div class="profile-card card reveal">
+      <div class="profile-head">
+        <div class="profile-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+        <div>
+          <h2 class="profile-name" id="profileName">Loading...</h2>
+          <p class="section-sub" style="margin-top:8px;">
+            <span data-i18n="profileRoleLabel">Role:</span> <strong id="profileRole">user</strong>
+          </p>
+          <div class="profile-meta">
+            <span class="badge intro" data-i18n="profileLearner">Learner</span>
+            <span class="badge full" data-i18n="profileTracked">Progress tracked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-grid section-block">
+      <div class="card panel-card reveal">
+        <h3 data-i18n="profileLastTitle">Last completed lesson</h3>
+        <p id="lastLesson">Loading...</p>
+      </div>
+
+      <div class="card panel-card reveal">
+        <h3 data-i18n="profileCompletedTitle">Completed courses</h3>
+        <p><strong id="completedCount">0</strong> <span data-i18n="profileFinished">finished lesson(s)</span></p>
+      </div>
+    </div>
+
+    <div class="profile-grid section-block">
+      <div class="card panel-card reveal">
+        <h3 data-i18n="profileListTitle">Completed list</h3>
+        <div id="completedList" class="chips" style="margin-top:12px;"></div>
+      </div>
+
+      <div class="card panel-card reveal">
+        <h3 data-i18n="profileTipTitle">Tip</h3>
+        <p data-i18n-html="profileTipText">Open the lessons page and click <strong>Mark as Completed</strong> after you finish a course. Your profile will update immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div data-i18n="footerBrand">VTuberForge x Astana IT University</div>
+        <div data-i18n="footerBackend">KBA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/i18n.js?v=try-vtuber-v1"></script>
+  <script src="js/profile.js"></script><script>loadProfileSummary();</script>
+</body>
+</html>
+
+
+
+
+
